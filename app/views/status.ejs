@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--icon-->
+    <link
+      rel="icon"
+      href="https://lh5.googleusercontent.com/qq75b9ARyuscR-o9P36tLOD5fBE4SHH_QKCH0ybfNuOh6y6SkR9SPJ4PsOz1qj2XsaVuZQYmyykhqEe-fB7yt5v4h3wIcU8"
+    />
+
+    <!--css-->
+    <link rel="stylesheet" href="/stylesheets/stylesheet-index.css" />
+    <link rel="stylesheet" href="/stylesheets/stylesheet-loading.css" />
+
+    <!--script-->
+    <script type="text/javascript" src="/javascript/loading.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9854922e4c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>返信状況確認画面</title>
+  </head>
+
+  <!--loading-->
+  <div id="loader">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+
+  <body>
+    <i class="fas fa-bars nav-bar"></i>
+
+    <nav class="hidden-nav">
+      <div class="container">
+        <br />
+        <br />
+        <li><a href="/teacher">MENU</a></li>
+        <br />
+        <li><a href="/status" target="_blank">返信状況</a></li>
+        <hr width="150" />
+        <li><a href="" target="_blank">機能A</a></li>
+        <hr width="150" />
+        <li><a href="" target="_blank">機能B</a></li>
+        <hr width="150" />
+        <li><a href="" target="_blank">機能C</a></li>
+        <hr width="150" />
+        <li><a href="" target="_blank">機能D</a></li>
+      </div>
+    </nav>
+    <div class="space hidden-space"></div>
+
+    <!--ここからサイドバーのところ-->
+    <div class="header">
+      <div class="container">
+        <div class="header-logo">
+          <a href="/">
+            <img
+              class="header-logo"
+              width="150"
+              height="70"
+              src="/image/ISDL_logo.png"
+            />
+          </a>
+          <!--<button class="header__button" onclick="navigate()">LOGOUT</button>-->
+        </div>
+      </div>
+  
+    </div>
+
+    <div class="top-wrapper">
+      <h2>返信状況確認ページ</h2>
+      <h3>
+        未返信：<%= unrepliedCount %>件 未返信のID： <%= unrepliedUsers.join(', ')%>
+      </h3>
+      <h3>返信済：<%= repliedCount %>件</h3>
+    </div>
+    <div class="middle-wrapper"></div>
+    <div class="bottom-wrapper"></div>
+
+    <footer>
+      <div class="container">
+        <a
+          >@2024 ISDL Created by Yusuke Okahata ＆ Naoki Kadoya YYYY/MM/DD<br />ver1.0.0</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      function navigate() {
+        window.location.href = "/";
+      }
+    </script>
+
+    <!--サイドバー-->
+    <script
+      src="http://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $(".nav-bar").on("click", function () {
+          //.nav-barがクリックされた時の処理↓
+
+          $(".space").toggleClass("hidden-space");
+          $("nav").toggleClass("hidden-nav");
+          //spaceとnavにそれぞれクラスを付けて、left:-200pxに移動させる。
+
+          $(".nav-bar").toggleClass("nav-bar-white");
+          //ナビゲーションバーの色を変更するクラスを付加する。
+
+          $("header").toggleClass("header-onclick");
+          //ヘッダーの幅を調整するクラスを付加する。
+
+          $(".Message-form").toggleClass(".Message-form-onclick");
+        });
+
+        $(window).scroll(function () {
+          if ($(window).scrollTop() > 80) {
+            $("header").addClass("header-scroll");
+            $(".nav-bar").addClass("header-scroll-nav");
+            $(".Message-form").addClass("Message-form-onclick");
+          } else {
+            $("header").removeClass("header-scroll");
+            $(".nav-bar").removeClass("header-scroll-nav");
+            $(".Message-form").removeClass("Message-form-onclick");
+          }
+        });
+      });
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+      const messages = document.getElementById("messages");
+      //console.log(form);
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
+
+      socket.on("chat message", function (msg) {
+        let item = document.createElement("li");
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--icon-->
+    <link
+      rel="icon"
+      href="https://lh5.googleusercontent.com/qq75b9ARyuscR-o9P36tLOD5fBE4SHH_QKCH0ybfNuOh6y6SkR9SPJ4PsOz1qj2XsaVuZQYmyykhqEe-fB7yt5v4h3wIcU8"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!--css-->
+    <link rel="stylesheet" href="/stylesheets/stylesheet-index.css" />
+    <link rel="stylesheet" href="/stylesheets/stylesheet-loading.css" />
+
+    <!--script-->
+    <script type="text/javascript" src="./javascript/loading.js"></script>
+
+    <title>チャットアプリ</title>
+  </head>
+
+  <!--loading-->
+  <div id="loader">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+
+  <body>
+    <header>
+      <div class="container">
+        <a href="/">
+          <img
+            class="header-logo"
+            width="150"
+            height="70"
+            src="/image/ISDL_logo.png"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="top-wrapper">
+      <div class="container">
+        <h2>ログインフォーム</h2>
+        <form class="login" action="/" method="POST">
+          <div class="input-container">
+            <input
+              class="name"
+              type="text"
+              name="username"
+              placeholder="Enter username"
+            />
+            <div class="pass-container">
+              <input
+                class="pass"
+                type="password"
+                name="password"
+                placeholder="Enter PASS"
+              />
+              <i class="fas fa-eye toggle-password"></i>
+            </div>
+          </div>
+
+          <!--<input class="pass" type="password" name="password" placeholder="Enter PASS" />
+          <label>
+            <input type="checkbox" id="showPassword"> パスワードを表示
+          </label>-->
+          <button class="sendButton" type="submit">ログイン</button>
+        </form>
+
+        <p style="color: red"><%= error %></p>
+
+        <div class="trans_registration">
+          <a class="trans_registration" href="registration"
+            >登録済みでない方はこちら</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="middle-wrapper"></div>
+
+    <div class="bottom-wrapper"></div>
+
+    <!--
+        <ul id="messages"></ul>
+        <form id="form" action="">
+            <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+        -->
+
+    <footer>
+      <div class="container">
+        <a
+          >@2024 ISDL Created by Yusuke Okahata ＆ Naoki Kadoya YYYY/MM/DD<br />ver1.0.0</a
+        >
+      </div>
+    </footer>
+
+    <!--パスワードの可視化切り替え-->
+    <script>
+      document
+        .querySelector(".toggle-password")
+        .addEventListener("click", function () {
+          var passwordField = document.querySelector(".pass");
+          var type = passwordField.type === "password" ? "text" : "password";
+          passwordField.type = type;
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
+    </script>
+
+    <!--
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+      const messages = document.getElementById("messages");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
+
+      socket.on("chat message", function (msg) {
+        let item = document.createElement("li");
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+    -->
+  </body>
+</html>

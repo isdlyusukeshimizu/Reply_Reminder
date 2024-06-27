@@ -1,0 +1,89 @@
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+#loader {
+  width: 100%;
+  height: 100vh;
+  background-color: #d5d1d1;
+  /* 環境によって「z-index」追加 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+/* 読み込み完了後に「loaded」を付与する */
+#loader.loaded {
+  animation: fadeOut 2s forwards;
+}
+
+/* 以降「SpinKit」で選んだアニメーションのCSSを貼付する */
+.spinner {
+  /*margin: 100px auto;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 40px;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #282828;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+  }
+}
+
+@keyframes sk-stretchdelay {
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+  }
+}

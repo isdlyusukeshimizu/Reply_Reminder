@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--icon-->
+<link
+  rel="icon"
+  href="https://lh5.googleusercontent.com/qq75b9ARyuscR-o9P36tLOD5fBE4SHH_QKCH0ybfNuOh6y6SkR9SPJ4PsOz1qj2XsaVuZQYmyykhqEe-fB7yt5v4h3wIcU8"
+/>
+
+<!--css-->
+<link rel="stylesheet" href="/stylesheets/stylesheet-index.css" />
+<link rel="stylesheet" href="/stylesheets/stylesheet-loading.css" />
+
+<!--script-->
+<script type="text/javascript" src="/javascript/loading.js"></script>
+
+<title><%= username %></title>
+
+<script src="/socket.io/socket.io.js"></script>
+  </head>
+  <!--loading-->
+  <div id="loader">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+  <body>
+    <header>
+      <div class="container">
+        <a href="/">
+          <img class="header-logo" width="150" height="70" src="/image/ISDL_logo.png" />
+        </a>
+      </div>
+    </header>
+
+<div class="top-wrapper">
+  <div class="message-form">
+    <div class="chat-messages" id="chat-messages">
+      <% if (messages && messages.length > 0) { %>
+        <% messages.forEach(function(message) { %>
+          <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+            <div class="message">
+              <span class="message-sender"><%= message.sender %>:</span>
+              <span class="message-text"><%= message.message %></span>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+    <ul id="messages"></ul>
+    <form id="form" action="/students/send" method="POST">
+      <input id="input" name="message" autocomplete="off" /><button>送信</button>
+    </form>
+  </div>
+  </div>
+</div>
+
+<div class="middle-wrapper"></div>
+
+<div class="bottom-wrapper"></div>
+
+<footer>
+  <div class="container">
+    <a
+      >@2024 ISDL Created by Yusuke Okahata ＆ Naoki Kadoya YYYY/MM/DD<br />ver1.0.0</a
+    >
+  </div>
+</footer>
+
+<script>
+  let socket = io();
+
+  const form = document.getElementById("form");
+  const input = document.getElementById("input");
+  const messages = document.getElementById("messages");
+  //console.log(form);
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit("chat message", { message: input.value, sender: '<%= username %>' });
+      input.value = "";
+    }
+  });
+
+  socket.on("chat message", function (msg) {
+    let item = document.createElement("li");
+    item.textContent = msg.message;
+    item.className = msg.sender === "student" ? "right" : "left";
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const chatMessages = document.getElementById("chat-messages");
+
+    // Scroll to the bottom of the chat messages div
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
+</script>
+  </body>
+</html>

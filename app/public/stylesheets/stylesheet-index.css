@@ -1,0 +1,421 @@
+body {
+  font-family: "arial black", serif;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0px;
+}
+h2 {
+  font-family: sans-serif;
+}
+.background {
+  /*background-image: url('../image/oral-bg2.jpg');*/
+  background-attachment: fixed;
+}
+
+.background::before {
+  background: url("/img/ISDL_logo.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  content: "";
+  z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: #efefef;
+}
+
+.trans_registration {
+  color: #0f0f0f;
+}
+
+.container {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.container-bottom {
+  text-align: center;
+  padding: 1px 0;
+}
+
+header {
+  background-color: rgb(255, 255, 255);
+  max-width: 100%;
+  height: 90px;
+}
+
+.header-logo {
+  padding: 0 40px;
+  margin: 0;
+  /*float:left;*/
+}
+
+.header-list li {
+  padding: 0px 20px;
+  float: left;
+}
+
+.header-list a {
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+/*サイドバー*/
+* {
+  transition: 0.5s;
+}
+
+body {
+  color: #454545;
+}
+
+nav {
+  width: 200px;
+  height: 100vh;
+  background-color: #928484;
+  position: fixed;
+  left: 0px;
+  z-index: 9;
+}
+
+nav li {
+  margin-bottom: 8px;
+}
+
+.space {
+  width: 200px;
+  height: 100vh;
+  float: left;
+}
+
+.nav-bar {
+  margin-top: 30px;
+  margin-left: 25px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 10;
+  color: #928484;
+}
+
+.hidden-space {
+  width: 0px;
+}
+
+.hidden-nav {
+  left: -200px;
+}
+
+.header-onclick {
+  width: 100%;
+  left: 0px;
+}
+
+.header-scroll {
+  height: 50px;
+  background-color: #fcecea;
+}
+
+.header-scroll-nav {
+  margin-top: 17px;
+}
+
+.nav-bar-white {
+  color: white;
+}
+
+.Message-form {
+  left: -100px;
+}
+
+.Message-form-onclick {
+  width: 100%;
+  left: 0px;
+}
+
+.top-wrapper {
+  background-color: rgb(240, 240, 240);
+  /*background-image:url(../img/chat_background.png);
+      background-size:100% auto;
+      background-repeat: no-repeat;
+      background-position: center;*/
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.chatList a {
+  color: #0f0f0f;
+}
+
+.top-image {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+#form {
+  background: #181818dc;
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+#input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  margin: 0.25rem;
+}
+#input:focus {
+  outline: none;
+}
+#form > button {
+  background: #4e8357;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 1px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+#messages > li:nth-child(odd) {
+  background: #efefef;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  gap: 20px; /* フォーム全体の間隔を開ける */
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 各入力フィールドとボタンの間隔 */
+}
+.name, .pass-container {
+  flex: 1;
+}
+.pass-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pass {
+  flex: 1;
+  padding-right: 30px; /* 目のアイコンのための余白 */
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.sendButton {
+  padding: 10px 20px; /* ボタンのパディングを調整 */
+  flex-shrink: 0; /* ボタンのサイズが縮まないようにする */
+}
+
+
+.message-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message-container.teacher {
+  justify-content: flex-end;
+}
+
+.message-container.student {
+  justify-content: flex-start;
+}
+
+.message-send2 {
+  color: yellow;
+}
+
+.message {
+  display: inline-block;
+  background-color: #4481f0; /* メッセージの背景色 */
+  border: 1px solid #1654bf; /* メッセージの枠線 */
+  border-radius: 15px; /* 角を丸くする */
+  padding: 10px 15px; /* 内側の余白 */
+  margin: 5px 0; /* 外側の余白 */
+  font-family: Arial, sans-serif; /* フォントの設定 */
+  font-size: 14px; /* フォントサイズ */
+  color: white; /* 文字色 */
+}
+
+.student-message {
+  text-align: left;
+  background-color: #fffacd;
+  border-radius: 10px 10px 0 10px;
+}
+
+.teacher-message {
+  text-align: right;
+  background-color: #d0e6ff;
+  border-radius: 10px 10px 0 10px;
+}
+
+.system-message {
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.middle-wrapper {
+  /*background-color: rgb(240, 240, 240);*/
+  font-family: "Hiragino Kaku Gothic ProN";
+  color: rgb(240, 240, 240);
+  text-shadow: var(--outline) 3px 0 0, var(--outline) 2.83487px 0.981584px 0,
+    var(--outline) 2.35766px 1.85511px 0, var(--outline) 1.62091px 2.52441px 0,
+    var(--outline) 0.705713px 2.91581px 0,
+    var(--outline) -0.287171px 2.98622px 0,
+    var(--outline) -1.24844px 2.72789px 0, var(--outline) -2.07227px 2.16926px 0,
+    var(--outline) -2.66798px 1.37182px 0, var(--outline) -2.96998px 0.42336px 0,
+    var(--outline) -2.94502px -0.571704px 0,
+    var(--outline) -2.59586px -1.50383px 0,
+    var(--outline) -1.96093px -2.27041px 0,
+    var(--outline) -1.11013px -2.78704px 0,
+    var(--outline) -0.137119px -2.99686px 0,
+    var(--outline) 0.850987px -2.87677px 0,
+    var(--outline) 1.74541px -2.43999px 0, var(--outline) 2.44769px -1.73459px 0,
+    var(--outline) 2.88051px -0.838247px 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+:root {
+  --outline: #333;
+}
+
+/*button*/
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: rgb(240, 240, 240);
+  border-radius: 0.5rem;
+}
+
+a.btn-svg {
+  font-weight: 700;
+  line-height: 54px;
+
+  width: 204px;
+  height: 54px;
+  padding: 0;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  background-color: transparent;
+}
+
+a.btn-svg svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+a.btn-svg svg rect {
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+
+  stroke: rgb(240, 240, 240);
+  stroke-width: 2;
+  stroke-dasharray: 200px, 16px;
+  stroke-dashoffset: 70px;
+}
+
+a.btn-svg:hover svg rect {
+  stroke-dashoffset: 284px;
+}
+
+a.btn-svg span {
+  color: rgb(240, 240, 240);
+  font-size: 15px;
+}
+
+.bottom-wrapper {
+  background-color: rgba(240, 240, 240, 0.6);
+  /*color:rgb(240, 240, 240);*/
+  max-height: 100%;
+}
+
+.videos {
+  display: flex;
+  max-height: 100%;
+}
+
+.live-video {
+  display: flex;
+  flex-direction: row;
+}
+.live-video h5 {
+  margin-left: 10px;
+}
+
+footer {
+  /*background-color: rgb(240,240,240);*/
+
+  color: rgb(240, 240, 240);
+  max-width: 100%;
+  height: 130px;
+
+  /*marginの上側を操作してfooterを最下部に設置*/
+  margin-top: 100%;
+}
+
+footer h7 {
+  font-size: 20px;
+}
+
+/* メッセージのスタイル */

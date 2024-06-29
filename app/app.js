@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 //
 app.use(session({
-  secret: 'ice_number1', 
+  secret: 'ice_number1', // ここを適切なシークレットキーに変更してください
   resave: false,
   //saveUninitialized: true,
   saveUninitialized: true
